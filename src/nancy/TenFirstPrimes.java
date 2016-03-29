@@ -5,6 +5,6 @@ package nancy;
  */
 public class TenFirstPrimes {
     public static void main(String[] args) {
-
+/* Hola estoy Nancy linda !
     }
 }
