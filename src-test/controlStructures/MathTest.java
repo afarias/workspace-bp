@@ -9,6 +9,7 @@ public class MathTest {
 
     @Test
     public void testIsPrime01() throws Exception {
+
         boolean result = math.isPrime(0);
 
         Assert.assertEquals(false, result);
