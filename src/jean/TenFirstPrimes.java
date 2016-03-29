@@ -16,12 +16,15 @@ public class TenFirstPrimes {
 
         int nPrimes = 0;
         int aNumber = 2;
+
+        /* The program will run until it find ten prime numbers */
         while(nPrimes < 10){
+            /* The number is tested to be prime, printed and counted */
             if (math.isPrime(aNumber)){
-                System.out.println();
+                System.out.println(aNumber);
                 nPrimes++;
             }
-
+            /* The program go to the next number to test */
             aNumber++;
         }
 
