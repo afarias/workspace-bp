@@ -12,6 +12,10 @@ public class TenFirstPrimes {
      * @param args It receives no arguments at all.
      */
     public static void main(String[] args) {
+/* Hola estoy Nancy linda !
 
+
+Gracias jean
+ */
     }
 }
