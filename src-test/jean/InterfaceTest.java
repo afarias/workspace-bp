@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class InterfaceTest {
 
-    private Interface anInterface  = new Interface();
+    private Interface anInterface = new Interface();
 
     @Test
     public void testAskQuestion() throws Exception {
