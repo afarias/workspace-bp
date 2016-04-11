@@ -1,7 +1,5 @@
 package strings;
 
-import java.util.Scanner;
-
 /**
  * Created by Andres Farías
  */
@@ -16,29 +14,18 @@ public class WordUtility {
      */
     public boolean isPalindrome(String word) {
         int lengthWord = word.length();
-        // je teste la condition d'arrêt
+        // Testing the stop case
         if (lengthWord < 2)
             return true;
-        // je teste les deux bornes
+        // Comparing the both edges
         char premierCaractere, dernierCaractere;
         premierCaractere = word.charAt(0);
         dernierCaractere = word.charAt(lengthWord - 1);
         if (premierCaractere != dernierCaractere)
             return false;
-            // Je vire les deux bornes
+            // Removing the edges tested
         else
             return isPalindrome(word.substring(1, lengthWord - 1));
-        // je rapelle la méthode
-//        int i;
-        // This will test every letter with the ultimate in order.
-//        for (i = 0; i < lengthWord / 2; i++) {
-//            char currentLetter = word.charAt(i);
-//            char testedLetter = word.charAt(lengthWord - i - 1);
-//            if (currentLetter != testedLetter)
-//                return false;
-////        }
-//
-//        return true;
     }
 
     /**
@@ -79,7 +66,68 @@ public class WordUtility {
         int lengthLine = line.length();
         String ignoredString = Character.toString(ignoredChar);
         /* we remove the ignored Char */
-            String lineWithoutChar = line.replaceAll(ignoredString, "");
-            return isPalindrome(lineWithoutChar);
+        String lineWithoutChar = line.replaceAll(ignoredString, "");
+        return isPalindrome(lineWithoutChar);
+    }
+
+    /**
+     * <p>
+     * This method is responsible for adding  in a given <code>String</code> an accent to a vocal if preceded by
+     * an apostrophe and remove the apostrophe if there is more than one.
+     *
+     * @param line The line to be changed.
+     * @return The modified line.
+     */
+
+    public String lipotimia(String line) {
+        char firstChar, secondChar;
+        int lengthLine = line.length();
+        String newLine = "";
+        // Set the condition to exit the recursive boucle.
+        if (lengthLine < 2) {
+            newLine = newLine.concat(line);
+            return newLine;
+        } else {
+            // The program reads the 2 next characters and do the modifications expected.
+            firstChar = line.charAt(0);
+            secondChar = line.charAt(1);
+
+            if (firstChar == '\'') {
+                if (secondChar == 'a') {
+                    newLine = newLine.concat("á");
+                } else if (secondChar == 'A') {
+                    newLine = newLine.concat("Á");
+                } else if (secondChar == 'e') {
+                    newLine = newLine.concat("é");
+                } else if (secondChar == 'E') {
+                    newLine = newLine.concat("É");
+                } else if (secondChar == 'i') {
+                    newLine = newLine.concat("í");
+                } else if (secondChar == 'I') {
+                    newLine = newLine.concat("Í");
+                } else if (secondChar == 'o') {
+                    newLine = newLine.concat("ó");
+                } else if (secondChar == 'O') {
+                    newLine = newLine.concat("Ó");
+                } else if (secondChar == 'u') {
+                    newLine = newLine.concat("ú");
+                } else if (secondChar == 'U') {
+                    newLine = newLine.concat("Ú");
+                } else if (secondChar == 'y') {
+                    newLine = newLine.concat("ý");
+                } else if (secondChar == 'Y') {
+                    newLine = newLine.concat("Ý");
+                } else if (secondChar == '\'') {
+                    newLine = newLine.concat("'");
+                }
+
+                return newLine.concat(lipotimia(line.substring(2)));
+            } else {
+                String aString = Character.toString(firstChar);
+                newLine = newLine.concat(aString);
+                return newLine.concat(lipotimia(line.substring(1)));
+            }
+
+        }
     }
 }

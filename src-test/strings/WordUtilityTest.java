@@ -15,6 +15,7 @@ public class WordUtilityTest {
 
         assertEquals(true, isPalindrome);
     }
+
     @Test
     public void testIsPalindrome02() throws Exception {
 
@@ -45,6 +46,15 @@ public class WordUtilityTest {
         boolean isPalindrome = aWordUtility.isPalindrome("anita lava la tina", ' ');
 
         assertEquals(true, isPalindrome);
+
+    }
+
+    @Test
+    public void testLipotimia() throws Exception {
+
+        String lipotomia = aWordUtility.lipotimia("Ana Mar'ia dej'o su a su ''Chanchito'' vestirse como un '''Angel'''.");
+
+        assertEquals("Ana María dejó su a su 'Chanchito' vestirse como un 'Ángel'.", lipotomia);
 
     }
 }
