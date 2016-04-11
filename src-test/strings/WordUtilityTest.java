@@ -24,6 +24,14 @@ public class WordUtilityTest {
     }
 
     @Test
+    public void testIsPalindrome05() throws Exception {
+
+        boolean isPalindrome = aWordUtility.isPalindrome("ghtyythg");
+
+        assertEquals(true, isPalindrome);
+    }
+
+    @Test
     public void testIsPalindrome03() throws Exception {
 
         boolean isPalindrome = aWordUtility.isPalindrome("anita lava la tina", true);
