@@ -1,6 +1,6 @@
 package jean;
 
-import controlStructures.Math;
+import math.Math;
 
 /**
  * Created by andres on 3/28/16.

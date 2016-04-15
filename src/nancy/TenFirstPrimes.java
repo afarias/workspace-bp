@@ -1,7 +1,5 @@
 package nancy;
 
-import controlStructures.Math;
-
 /**
  * Created by andres on 3/28/16.
  */

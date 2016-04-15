@@ -4,14 +4,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class WordUtilityTest {
+public class WordUtilityJeanImplTest {
 
-    private WordUtility aWordUtility = new WordUtility();
+    private IWordUtility aIWordUtility = new WordUtilityJeanImpl();
 
     @Test
     public void testIsPalindrome01() throws Exception {
 
-        boolean isPalindrome = aWordUtility.isPalindrome("oso");
+        boolean isPalindrome = aIWordUtility.isPalindrome("oso");
 
         assertEquals(true, isPalindrome);
     }
@@ -19,7 +19,7 @@ public class WordUtilityTest {
     @Test
     public void testIsPalindrome02() throws Exception {
 
-        boolean isPalindrome = aWordUtility.isPalindrome("atina");
+        boolean isPalindrome = aIWordUtility.isPalindrome("atina");
 
         assertEquals(false, isPalindrome);
     }
@@ -27,7 +27,7 @@ public class WordUtilityTest {
     @Test
     public void testIsPalindrome05() throws Exception {
 
-        boolean isPalindrome = aWordUtility.isPalindrome("ghtyythg");
+        boolean isPalindrome = aIWordUtility.isPalindrome("ghtyythg");
 
         assertEquals(true, isPalindrome);
     }
@@ -35,7 +35,7 @@ public class WordUtilityTest {
     @Test
     public void testIsPalindrome03() throws Exception {
 
-        boolean isPalindrome = aWordUtility.isPalindrome("anita lava la tina", true);
+        boolean isPalindrome = aIWordUtility.isPalindrome("anita lava la tina", true);
 
         assertEquals(true, isPalindrome);
     }
@@ -43,7 +43,7 @@ public class WordUtilityTest {
     @Test
     public void testIsPalindrome04() throws Exception {
 
-        boolean isPalindrome = aWordUtility.isPalindrome("anita lava la tina", ' ');
+        boolean isPalindrome = aIWordUtility.isPalindrome("anita lava la tina", ' ');
 
         assertEquals(true, isPalindrome);
 
@@ -52,7 +52,7 @@ public class WordUtilityTest {
     @Test
     public void testLipotimia() throws Exception {
 
-        String lipotomia = aWordUtility.lipotimia("Ana Mar'ia dej'o su a su ''Chanchito'' vestirse como un '''Angel'''.");
+        String lipotomia = aIWordUtility.lipotimia("Ana Mar'ia dej'o su a su ''Chanchito'' vestirse como un '''Angel'''.");
 
         assertEquals("Ana María dejó su a su 'Chanchito' vestirse como un 'Ángel'.", lipotomia);
 

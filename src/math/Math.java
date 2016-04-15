@@ -1,4 +1,4 @@
-package controlStructures;
+package math;
 
 public class Math {
     public Math() {

@@ -1,4 +1,4 @@
-package controlStructures;
+package math;
 
 import java.lang.*;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class NumeroPrimo {
         String userResponse = AFFIRMATIVE_RESPONSE;
 
         /* The program will ask for testing prime numbers until the user explicitly answers no. */
-        Math math = new Math();
+        math.Math math = new math.Math();
         while (userResponse.equalsIgnoreCase(AFFIRMATIVE_RESPONSE)) {
 
             System.out.println("Which number do you want to test if it's prime?");

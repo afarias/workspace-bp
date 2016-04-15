@@ -3,7 +3,7 @@ package strings;
 /**
  * Created by Andres Farías
  */
-public class WordUtility {
+public class WordUtilityJeanImpl implements IWordUtility {
 
     /**
      * <p>
@@ -12,6 +12,7 @@ public class WordUtility {
      * @param word The word to be checked to be palindrome.
      * @return <code>true</code> if the <code>word</code> is palindrome and  <code>false</code> otherwise.
      */
+    @Override
     public boolean isPalindrome(String word) {
         int lengthWord = word.length();
         // Testing the stop case
@@ -38,6 +39,7 @@ public class WordUtility {
      *                     palindrome.
      * @return <code>true</code> if the <code>word</code> is palindrome and  <code>false</code> otherwise.
      */
+    @Override
     public boolean isPalindrome(String line, boolean ignoreSpaces) {
         int i = 0;
         int lengthLine = line.length();
@@ -61,13 +63,13 @@ public class WordUtility {
      * @return <code>true</code> if the <code>line</code> is palindrome and  <code>false</code> otherwise.
      */
 
+    @Override
     public boolean isPalindrome(String line, char ignoredChar) {
-        int i = 0;
-        int lengthLine = line.length();
+
         String ignoredString = Character.toString(ignoredChar);
+
         /* we remove the ignored Char */
-        String lineWithoutChar = line.replaceAll(ignoredString, "");
-        return isPalindrome(lineWithoutChar);
+        return isPalindrome(line.replaceAll(ignoredString, ""));
     }
 
     /**
@@ -79,20 +81,25 @@ public class WordUtility {
      * @return The modified line.
      */
 
+    @Override
     public String lipotimia(String line) {
         char firstChar, secondChar;
         int lengthLine = line.length();
         String newLine = "";
-        // Set the condition to exit the recursive boucle.
-        if (lengthLine < 2) {
-            newLine = newLine.concat(line);
-            return newLine;
-        } else {
-            // The program reads the 2 next characters and do the modifications expected.
-            firstChar = line.charAt(0);
-            secondChar = line.charAt(1);
 
-            if (firstChar == '\'') {
+        /* Set the condition to exit the recursive loop: If there are less than two chars, there is nothing left to be done. */
+        if (lengthLine < 2) {
+            return newLine.concat(line);
+        }
+
+        // The program reads the 2 next characters and do the modifications expected.
+        firstChar = line.charAt(0);
+        secondChar = line.charAt(1);
+
+        if (firstChar == '\'') {
+
+            if (isSpecialChar(secondChar)) {
+            /* If there is vocal next, the substitution is made */
                 if (secondChar == 'a') {
                     newLine = newLine.concat("á");
                 } else if (secondChar == 'A') {
@@ -122,12 +129,25 @@ public class WordUtility {
                 }
 
                 return newLine.concat(lipotimia(line.substring(2)));
-            } else {
-                String aString = Character.toString(firstChar);
-                newLine = newLine.concat(aString);
-                return newLine.concat(lipotimia(line.substring(1)));
             }
 
+        } else {
+            String aString = Character.toString(firstChar);
+            newLine = newLine.concat(aString);
         }
+
+        return newLine.concat(lipotimia(line.substring(1)));
+
+    }
+
+    /**
+     * @param aChar
+     * @return
+     */
+    protected boolean isSpecialChar(char aChar) {
+
+        return ((aChar == 'a') | (aChar == 'A') | (aChar == 'e') | (aChar == 'E') | (aChar == 'i') | (aChar == 'I')
+                | (aChar == 'o') | (aChar == 'O') | (aChar == 'u') | (aChar == 'U') | (aChar == 'y') | (aChar == 'Y')
+                | (aChar == '\''));
     }
 }
