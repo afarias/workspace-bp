@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
  * Created by Admin on 14/04/2016.
  */
 public class MonProgrammeMath {
+
     public static void main(String[] args) {
         IFigure rectangle1 = new Rectangle(2, 5);
         IFigure rectangle2 = new Rectangle(3, 600);

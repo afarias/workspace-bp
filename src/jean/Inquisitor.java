@@ -5,14 +5,28 @@ import java.util.Scanner;
 /**
  * Created by Admin on 05/04/2016.
  */
-public class Interface {
+
+
+public class Inquisitor {
+
+    public int askQuestion(String question, int startRange) { return askQuestion(question, startRange, Integer.MAX_VALUE);}
+
+
+    /**
+     * TODO à terminer
+     * @param question The question that will be asked to the user
+     * @param startRange The minimal value of answer
+     * @param endRange The maximal value of answer
+     * @return The valid numeric int answer choose by the user
+     */
+    public int askQuestion(String question, int startRange, int endRange) { return 0;}
 
     public static void main(String[] args) {
         String question1 = "Y/N ?";
         String answers[] = {"Y", "N"};
-        Interface anInterface = new Interface();
+        Inquisitor anInquisitor = new Inquisitor();
 
-        String userAnswer = anInterface.askQuestion(question1, answers);
+        String userAnswer = anInquisitor.askQuestion(question1, answers);
         System.out.println(userAnswer);
     }
 
