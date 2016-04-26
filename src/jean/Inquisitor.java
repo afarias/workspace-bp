@@ -8,26 +8,36 @@ import java.util.Scanner;
 
 
 public class Inquisitor {
-
-    public int askQuestion(String question, int startRange) { return askQuestion(question, startRange, Integer.MAX_VALUE);}
+    public int askQuestion(String question, int startRange) throws TooBigForIntegerException {
+        try {
+            return askQuestion(question, startRange, Integer.MAX_VALUE);
+        } catch (TooBigForIntegerException we) {
+            return askQuestion(question, startRange, Integer.MAX_VALUE - 1);
+        }
+    }
 
 
     /**
-     * TODO à terminer
-     * @param question The question that will be asked to the user
+     * This method is responsible for getting a valid numerical response after asking a question.
+     *
+     * @param question   The question that will be asked to the user
      * @param startRange The minimal value of answer
-     * @param endRange The maximal value of answer
+     * @param endRange   The maximal value of answer
      * @return The valid numeric int answer choose by the user
      */
-    public int askQuestion(String question, int startRange, int endRange) { return 0;}
-
-    public static void main(String[] args) {
-        String question1 = "Y/N ?";
-        String answers[] = {"Y", "N"};
-        Inquisitor anInquisitor = new Inquisitor();
-
-        String userAnswer = anInquisitor.askQuestion(question1, answers);
-        System.out.println(userAnswer);
+    // TODO Régler ca pour pas que l'array soit trop grand !
+    public int askQuestion(String question, int startRange, int endRange) throws TooBigForIntegerException {
+        int myArraySize = endRange - startRange + 1;
+        if (myArraySize < 0)
+            throw new TooBigForIntegerException();
+        // we are creating an array to store all the possible answers.
+        String myArray[] = new String[myArraySize];
+        // we fill the array
+        for (int i = 0; i < myArraySize; i++) {
+            myArray[i] = Integer.toString(startRange + i);
+        }
+        String theStringAnswer = askQuestion(question, myArray);
+        return Integer.parseInt(theStringAnswer);
     }
 
     /**

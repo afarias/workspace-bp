@@ -1,13 +1,14 @@
 package bank;
 
 import jean.Inquisitor;
+import jean.TooBigForIntegerException;
 
 /**
  * Created by Admin on 18/04/2016.
  */
 public class Programa {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TooBigForIntegerException {
 
         ATM myATM = new ATM();
 
@@ -33,5 +34,40 @@ public class Programa {
         String question2 = "Saldo inicial?";
         int balance = anInquisitor.askQuestion(question2, 0);
         account.setBalance(balance);
+
+
+        int reponse3;
+        do {
+            String question3 = "Que desea hacer\n" +
+                    "1.- Consultar Saldo\n" +
+                    "2.- Depositar dinero\n" +
+                    "3.- Retirar dinero\n" +
+                    "4.- Terminar programa\n";
+
+            reponse3 = anInquisitor.askQuestion(question3, 1, 4);
+
+            switch (reponse3) {
+                case 1:
+                    balance = myATM.consult(account);
+                    System.out.println("Su saldo es: " + balance);
+                case 2:
+                    String questionDeposit = "Cuanto desea depositar?";
+                    int deposit = anInquisitor.askQuestion(questionDeposit, 0);
+                    myATM.deposit(account, deposit);
+                case 3:
+                    String questionWithdrawal = "Cuanto desea retirar?";
+                    int withdrawal = anInquisitor.askQuestion(questionWithdrawal, 0);
+                    try {
+                        myATM.withdrawal(account,withdrawal);
+                    } catch (WithdrawallTooBigException we){
+                        System.out.println("Dégage sale pauvre !");
+                        break;
+                    }
+
+                    System.out.println("Usted ha retirado " + withdrawal);
+            }
+
+        } while (reponse3 != 4);
+        System.out.println("Hasta luego!");
     }
 }
