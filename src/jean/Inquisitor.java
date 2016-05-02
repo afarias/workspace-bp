@@ -8,12 +8,8 @@ import java.util.Scanner;
 
 
 public class Inquisitor {
-    public int askQuestion(String question, int startRange) throws TooBigForIntegerException {
-        try {
-            return askQuestion(question, startRange, Integer.MAX_VALUE);
-        } catch (TooBigForIntegerException we) {
-            return askQuestion(question, startRange, Integer.MAX_VALUE - 1);
-        }
+    public int askQuestion(String question, int startRange) {
+        return askQuestion(question, startRange, Integer.MAX_VALUE);
     }
 
 
@@ -25,19 +21,23 @@ public class Inquisitor {
      * @param endRange   The maximal value of answer
      * @return The valid numeric int answer choose by the user
      */
-    // TODO Régler ca pour pas que l'array soit trop grand !
-    public int askQuestion(String question, int startRange, int endRange) throws TooBigForIntegerException {
-        int myArraySize = endRange - startRange + 1;
-        if (myArraySize < 0)
-            throw new TooBigForIntegerException();
-        // we are creating an array to store all the possible answers.
-        String myArray[] = new String[myArraySize];
-        // we fill the array
-        for (int i = 0; i < myArraySize; i++) {
-            myArray[i] = Integer.toString(startRange + i);
-        }
-        String theStringAnswer = askQuestion(question, myArray);
-        return Integer.parseInt(theStringAnswer);
+
+    public int askQuestion(String question, int startRange, int endRange) {
+        Scanner sc = new Scanner(System.in);
+        int userInput;
+        boolean isValid;
+
+
+        // The program will test if the Integer is included in the range of possible answers
+        do {
+            System.out.println(question);
+            userInput = sc.nextInt();
+            isValid = (userInput >= startRange && userInput <= endRange);
+            if (isValid) {
+                break;
+            }
+        } while (!isValid);
+        return userInput;
     }
 
     /**
