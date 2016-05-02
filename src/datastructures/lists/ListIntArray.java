@@ -4,25 +4,41 @@ package datastructures.lists;
  * Created by andres on 5/2/16.
  */
 public class ListIntArray implements IListInt {
+    /**
+     * This is array will store the numbers.
+     */
+    private int[] myList;
+    /**
+     * This Integer is the reference of the last element saved in the list.
+     */
+    private int lastIndex;
+
+    public ListIntArray(int capacity) {
+        if (capacity <1 ) {
+            throw new IllegalArgumentException("Le tableau doit avoir une capacité positive");
+        }
+        myList = new int[capacity];
+        lastIndex = 0;
+    }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return (lastIndex < 1);
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return (lastIndex == this.myList.length);
     }
 
     @Override
     public int size() {
-        return 0;
+        return lastIndex;
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return this.myList.length;
     }
 
     @Override
@@ -32,7 +48,11 @@ public class ListIntArray implements IListInt {
 
     @Override
     public void addAtEnd(int number) {
-
+    if (number > this.lastIndex){
+        throw new IllegalStateException("Le tableau est plein");
+    }
+        myList[this.lastIndex+1] = number;
+        lastIndex++;
     }
 
     @Override
