@@ -89,4 +89,13 @@ public interface IListInt {
      * @return The element on the list at the <code>index</code> position.
      */
     public int getAt(int index);
+
+    /**
+     * This method is responsible for looking for a given <code>number</code> inside the list.
+     *
+     * @param number The number which is looked for.
+     *
+     * @return <code>true</code> if the <code>number</code> is in the list and <code>false</code> otherwise.
+     */
+    public boolean contains(int number);
 }
