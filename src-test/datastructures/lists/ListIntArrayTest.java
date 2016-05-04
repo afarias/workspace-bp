@@ -21,9 +21,22 @@ public class ListIntArrayTest {
         Assert.assertEquals(false, emptyArray.isEmpty());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor() throws Exception {
+        new ListIntArray(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor02() throws Exception {
+        new ListIntArray(0);
+    }
+
     @Test
     public void testIsFull() throws Exception {
+        ListIntArray emptyArray = new ListIntArray(1);
+        emptyArray.addAtEnd(1);
 
+        assertTrue(emptyArray.isFull());
     }
 
     @Test
