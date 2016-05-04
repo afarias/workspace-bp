@@ -93,12 +93,8 @@ public class ListIntArray implements IListInt {
         if (isFull()) {
             throw new IllegalStateException("Le tableau est plein");
         }
-        if (isEmpty()) {
-            myList[this.lastIndex] = number;
-        } else {
-            myList[this.lastIndex + 1] = number;
-        }
 
+        myList[this.lastIndex] = number;
         lastIndex++;
     }
 
@@ -155,6 +151,6 @@ public class ListIntArray implements IListInt {
     // TODO: Implement this.
     @Override
     public int getAt(int index) {
-        return 0;
+        return myList[index];
     }
 }
