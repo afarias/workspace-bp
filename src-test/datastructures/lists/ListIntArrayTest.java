@@ -90,11 +90,11 @@ public class ListIntArrayTest {
     @Test
     public void testAddAtBeginning02() throws Exception {
         ListIntArray array = new ListIntArray(10);
-        array.addAtEnd(1);
-        array.addAtEnd(2);
+        array.addAtBeginning(1);
+        array.addAtBeginning(2);
 
-        assertEquals(array.getAt(0), 1);
-        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(1), 1);
+        assertEquals(array.getAt(0), 2);
     }
 
     @Test
