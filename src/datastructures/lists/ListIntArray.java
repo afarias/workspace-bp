@@ -151,4 +151,10 @@ public class ListIntArray implements IListInt {
         lastIndex--;
         return extractedValue;
     }
+
+    // TODO: Implement this.
+    @Override
+    public int getAt(int index) {
+        return 0;
+    }
 }

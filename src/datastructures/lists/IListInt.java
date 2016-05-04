@@ -28,6 +28,7 @@ public interface IListInt {
 
     /**
      * This method is responsible for determining the current capacity of the list.
+     *
      * @return The current list capacity
      */
     public int capacity();
@@ -70,10 +71,20 @@ public interface IListInt {
     public int removeLast();
 
     /**
-     * This method is responsible for extracting the <code>number</code> at a given (<code>index</code>) position of the
+     * This method is responsible for extracting the <code>number</code> at a given (<code>index</code>) position of
+     * the
      * list.
      *
-     * @param index  The position at which
+     * @param index The position at which
      */
     public int removeAt(int index);
+
+    /**
+     * This method is responsible for retrieving the number stored at the given <code>index</code>.
+     *
+     * @param index The index an which the element is.
+     *
+     * @return The element on the list at the <code>index</code> position.
+     */
+    public int getAt(int index);
 }

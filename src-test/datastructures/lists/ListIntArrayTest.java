@@ -40,18 +40,52 @@ public class ListIntArrayTest {
     }
 
     @Test
-    public void testSize() throws Exception {
+    public void testIsFull02() throws Exception {
+        ListIntArray emptyArray = new ListIntArray(2);
+        emptyArray.addAtEnd(1);
+        emptyArray.addAtEnd(2);
 
+        assertTrue(emptyArray.isFull());
+    }
+
+    @Test
+    public void testSize01() throws Exception {
+        ListIntArray array = new ListIntArray(2);
+        array.addAtEnd(1);
+
+        assertEquals(1, array.size());
     }
 
     @Test
     public void testCapacity() throws Exception {
+        ListIntArray array = new ListIntArray(2);
 
+        assertEquals(2, array.capacity());
+    }
+
+    @Test
+    public void testCapacity03() throws Exception {
+        ListIntArray array = new ListIntArray(2);
+        array.addAtEnd(1);
+        array.addAtEnd(1);
+
+        assertEquals(2, array.capacity());
+    }
+
+    @Test
+    public void testCapacity01() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+
+        assertEquals(10, array.capacity());
     }
 
     @Test
     public void testAddAtBeginning() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
 
+        assertEquals(array.getAt(1), 1);
     }
 
     @Test
