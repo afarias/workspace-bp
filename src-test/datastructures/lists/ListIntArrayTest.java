@@ -93,8 +93,8 @@ public class ListIntArrayTest {
         array.addAtEnd(1);
         array.addAtEnd(2);
 
-        assertEquals(array.getAt(1), 1);
-        assertEquals(array.getAt(0), 2);
+        assertEquals(array.getAt(0), 1);
+        assertEquals(array.getAt(1), 2);
     }
 
     @Test
