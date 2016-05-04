@@ -1,8 +1,5 @@
 package datastructures.lists;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by andres on 5/2/16.
  */
@@ -96,7 +93,12 @@ public class ListIntArray implements IListInt {
         if (isFull()) {
             throw new IllegalStateException("Le tableau est plein");
         }
-        myList[this.lastIndex + 1] = number;
+        if (isEmpty()) {
+            myList[this.lastIndex] = number;
+        } else {
+            myList[this.lastIndex + 1] = number;
+        }
+
         lastIndex++;
     }
 
@@ -128,10 +130,10 @@ public class ListIntArray implements IListInt {
         if (isEmpty()) {
             throw new IllegalStateException("There is no number to extract");
         }
-            int extractedValue = myList[lastIndex];
-            myList[lastIndex] = 0;
-            lastIndex--;
-            return extractedValue;
+        int extractedValue = myList[lastIndex];
+        myList[lastIndex] = 0;
+        lastIndex--;
+        return extractedValue;
 
     }
 
@@ -140,7 +142,7 @@ public class ListIntArray implements IListInt {
         if (isEmpty()) {
             throw new IllegalStateException("There is no number to extract");
         }
-        if (index > lastIndex){
+        if (index > lastIndex) {
             throw new IllegalStateException("there is no number in this index");
         }
         int extractedValue = myList[index];
