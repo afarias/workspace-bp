@@ -1,7 +1,9 @@
 package datastructures.lists;
 
 /**
- * Created by andres on 5/2/16.
+ * This interfaces states and defines how a List is expected to work and behave.
+ *
+ * A list will have elements, which are in a given order. The first element is at the position 0.
  */
 public interface IListInt {
 
@@ -52,7 +54,7 @@ public interface IListInt {
      * list.
      *
      * @param number The number to be inserted at the end of the list.
-     * @param index  The position at which
+     * @param index  The position at which the number is inserted. Indexes start at 0.
      */
     public void addAt(int number, int index);
 
@@ -82,7 +84,7 @@ public interface IListInt {
     /**
      * This method is responsible for retrieving the number stored at the given <code>index</code>.
      *
-     * @param index The index an which the element is.
+     * @param index The index an which the element is. Indexes start at 0.
      *
      * @return The element on the list at the <code>index</code> position.
      */

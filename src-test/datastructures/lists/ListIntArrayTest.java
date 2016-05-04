@@ -87,9 +87,18 @@ public class ListIntArrayTest {
 
         assertEquals(array.getAt(1), 1);
     }
+    @Test
+    public void testAddAtBeginning02() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+
+        assertEquals(array.getAt(2), 1);
+        assertEquals(array.getAt(1), 2);
+    }
 
     @Test
-    public void testAddAtEnd() throws Exception {
+    public void testAddAtEnd01() throws Exception {
 
     }
 
