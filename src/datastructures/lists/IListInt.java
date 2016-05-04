@@ -70,11 +70,10 @@ public interface IListInt {
     public int removeLast();
 
     /**
-     * This method is responsible for storing the <code>number</code> at a given (<code>index</code>) position of the
+     * This method is responsible for extracting the <code>number</code> at a given (<code>index</code>) position of the
      * list.
      *
-     * @param number The number to be inserted at the end of the list.
      * @param index  The position at which
      */
-    public void removeAt(int number, int index);
+    public int removeAt(int index);
 }
