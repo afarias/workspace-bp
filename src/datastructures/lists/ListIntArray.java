@@ -151,6 +151,6 @@ public class ListIntArray implements IListInt {
     // TODO: Implement this.
     @Override
     public int getAt(int index) {
-        return 0;
+        return myList[index];
     }
 }
