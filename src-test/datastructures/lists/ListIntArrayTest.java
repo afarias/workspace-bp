@@ -85,7 +85,7 @@ public class ListIntArrayTest {
         ListIntArray array = new ListIntArray(10);
         array.addAtEnd(1);
 
-        assertEquals(array.getAt(1), 1);
+        assertEquals(array.getAt(0), 1);
     }
     @Test
     public void testAddAtBeginning02() throws Exception {
@@ -93,8 +93,8 @@ public class ListIntArrayTest {
         array.addAtEnd(1);
         array.addAtEnd(2);
 
-        assertEquals(array.getAt(2), 1);
-        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(1), 1);
+        assertEquals(array.getAt(0), 2);
     }
 
     @Test
