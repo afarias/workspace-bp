@@ -47,7 +47,7 @@ public class ListIntArray implements IListInt {
         if (isFull()) {
             throw new IllegalStateException("Le tableau est plein");
         }
-
+// coût 2
         this.shiftRight(0);
 
         lastIndex++;
@@ -148,9 +148,18 @@ public class ListIntArray implements IListInt {
         return extractedValue;
     }
 
-    // TODO: Implement this.
     @Override
     public int getAt(int index) {
         return myList[index];
+    }
+
+    @Override
+    public boolean contains(int number) {
+        for (int i = 0; i == lastIndex - 1; i++) {
+            if (myList[i] == number) {
+                return true;
+            }
+        }
+        return false;
     }
 }
