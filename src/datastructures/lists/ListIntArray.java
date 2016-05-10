@@ -28,12 +28,12 @@ public class ListIntArray implements IListInt {
 
     @Override
     public boolean isFull() {
-        return (lastIndex == this.myList.length);
+        return (lastIndex == this.myList.length-1);
     }
 
     @Override
     public int size() {
-        return lastIndex;
+        return lastIndex+1;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class ListIntArray implements IListInt {
             throw new IllegalStateException("Le tableau est plein");
         }
 
-        myList[this.lastIndex] = number;
+        myList[this.lastIndex+1] = number;
         lastIndex++;
     }
 
@@ -154,7 +154,7 @@ public class ListIntArray implements IListInt {
 
     @Override
     public boolean contains(int number) {
-        for (int i = 0; i < lastIndex; i++) {
+        for (int i = 0; i <= lastIndex; i++) {
             if (myList[i] == number) {
                 return true;
             }

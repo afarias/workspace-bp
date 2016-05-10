@@ -141,9 +141,9 @@ public class ListIntArrayTest {
     @Test
     public void testRemoveFirst() throws Exception {
         ListIntArray array = new ListIntArray(10);
-        array.addAt(0, 1);
-        array.addAt(0, 2);
-        array.addAt(1, 3);
+        array.addAt(1, 0);
+        array.addAt(2, 0);
+        array.addAt(3, 1);
 
         int removed = array.removeFirst();
         assertEquals(removed, 2);
@@ -185,9 +185,11 @@ public class ListIntArrayTest {
         array.addAtEnd(10);
 
         boolean contains = array.contains(1);
+        boolean contains2 = array.contains(10);
+        boolean contains3 = array.contains(0);
         assertTrue(contains);
-        assertTrue(array.contains(10));
-        assertFalse(array.contains(0));
+        assertTrue(contains2);
+        assertFalse(contains3);
 
     }
 
