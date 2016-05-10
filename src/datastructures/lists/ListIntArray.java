@@ -23,7 +23,7 @@ public class ListIntArray implements IListInt {
 
     @Override
     public boolean isEmpty() {
-        return (lastIndex < 1);
+        return (lastIndex < 0);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ListIntArray implements IListInt {
     /**
      * This method is responsible for shifting the values of the myList Array one step on the right.
      */
-    private void shiftRight(int index) {
+    protected void shiftRight(int index) {
         if (isFull())
             throw new IllegalStateException("Le tableau est plein");
 
@@ -66,7 +66,7 @@ public class ListIntArray implements IListInt {
         } else if (index > lastIndex) {
             return;
         } else {
-            for (int i = lastIndex; i == index + 1; i--) {
+            for (int i = lastIndex; i > index; i--) {
                 myList[i] = myList[i - 1];
             }
         }
@@ -155,7 +155,7 @@ public class ListIntArray implements IListInt {
 
     @Override
     public boolean contains(int number) {
-        for (int i = 0; i == lastIndex - 1; i++) {
+        for (int i = 0; i < lastIndex; i++) {
             if (myList[i] == number) {
                 return true;
             }

@@ -112,9 +112,9 @@ public class ListIntArrayTest {
     @Test
     public void testAddAt() throws Exception {
         ListIntArray array = new ListIntArray(10);
-        array.addAt(0, 1);
-        array.addAt(0, 2);
-        array.addAt(1, 3);
+        array.addAt(1, 0);
+        array.addAt(2, 0);
+        array.addAt(3, 1);
 
         assertEquals(array.getAt(0), 2);
         assertEquals(array.getAt(1), 3);
@@ -151,5 +151,45 @@ public class ListIntArrayTest {
         int removed = array.removeAt(0);
         assertEquals(removed, 1);
 
+    }
+
+    @Test
+    public void contains1() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+        array.addAtEnd(5);
+        array.addAtEnd(6);
+        array.addAtEnd(7);
+        array.addAtEnd(8);
+        array.addAtEnd(9);
+        array.addAtEnd(10);
+
+        boolean contains = array.contains(1);
+        assertTrue(contains);
+        assertTrue(array.contains(10));
+        assertFalse(array.contains(0));
+
+    }
+
+    @Test
+    public void shiftRight() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+        array.addAtEnd(5);
+
+        array.shiftRight(2);
+
+        assertEquals(array.getAt(0), (1));
+        assertEquals(array.getAt(1), (2));
+        assertEquals(array.getAt(2), (3));
+        assertEquals(array.getAt(3), (3));
+        assertEquals(array.getAt(4), (4));
+        assertEquals(array.getAt(5), (5));
     }
 }
