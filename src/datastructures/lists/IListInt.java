@@ -95,7 +95,7 @@ public interface IListInt {
      *
      * @param number The number which is looked for.
      *
-     * @return <code>true</code> if the <code>number</code> is in the list and <code>false</code> otherwise.
+     * @return <code>true</code> if the <code>number</code> is in the list and <code>false</code> otherwise. "
      */
     public boolean contains(int number);
 }

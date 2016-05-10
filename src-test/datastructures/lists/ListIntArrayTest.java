@@ -87,6 +87,7 @@ public class ListIntArrayTest {
 
         assertEquals(array.getAt(0), 1);
     }
+
     @Test
     public void testAddAtBeginning02() throws Exception {
         ListIntArray array = new ListIntArray(10);
@@ -99,26 +100,56 @@ public class ListIntArrayTest {
 
     @Test
     public void testAddAtEnd01() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+
+        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(0), 1);
 
     }
 
     @Test
     public void testAddAt() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAt(0, 1);
+        array.addAt(0, 2);
+        array.addAt(1, 3);
 
+        assertEquals(array.getAt(0), 2);
+        assertEquals(array.getAt(1), 3);
+        assertEquals(array.getAt(2), 1);
     }
 
     @Test
     public void testRemoveFirst() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAt(0, 1);
+        array.addAt(0, 2);
+        array.addAt(1, 3);
 
+        int removed = array.removeFirst();
+        assertEquals(removed, 2);
     }
 
     @Test
     public void testRemoveLast() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
 
+        int removed = array.removeLast();
+        assertEquals(removed, 2);
     }
 
     @Test
     public void testRemoveAt() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+
+        int removed = array.removeAt(0);
+        assertEquals(removed, 1);
 
     }
 }
