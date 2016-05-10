@@ -110,15 +110,32 @@ public class ListIntArrayTest {
     }
 
     @Test
-    public void testAddAt() throws Exception {
+    public void testAddAt00() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAt(1, 0);
+
+        assertEquals(array.getAt(0), 1);
+    }
+
+    @Test
+    public void testAddAt01() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAt(1, 0);
+        array.addAt(2, 1);
+
+        assertEquals(array.getAt(0), 1);
+        assertEquals(array.getAt(1), 2);
+    }
+
+    @Test
+    public void testAddAt02() throws Exception {
+
         ListIntArray array = new ListIntArray(10);
         array.addAt(1, 0);
         array.addAt(2, 0);
-        array.addAt(3, 1);
 
         assertEquals(array.getAt(0), 2);
-        assertEquals(array.getAt(1), 3);
-        assertEquals(array.getAt(2), 1);
+        assertEquals(array.getAt(1), 1);
     }
 
     @Test

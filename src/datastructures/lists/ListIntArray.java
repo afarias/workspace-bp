@@ -18,12 +18,12 @@ public class ListIntArray implements IListInt {
             throw new IllegalArgumentException("Le tableau doit avoir une capacité positive");
         }
         myList = new int[capacity];
-        lastIndex = 0;
+        lastIndex = -1;
     }
 
     @Override
     public boolean isEmpty() {
-        return (lastIndex < 0);
+        return (lastIndex == -1);
     }
 
     @Override
@@ -66,8 +66,8 @@ public class ListIntArray implements IListInt {
         } else if (index > lastIndex) {
             return;
         } else {
-            for (int i = lastIndex; i > index; i--) {
-                myList[i] = myList[i - 1];
+            for (int i = lastIndex; i >= index; i--) {
+                myList[i+1] = myList[i];
             }
         }
     }
@@ -105,8 +105,7 @@ public class ListIntArray implements IListInt {
         }
         this.shiftRight(index);
         myList[index] = number;
-
-
+        lastIndex++;
     }
 
     @Override
