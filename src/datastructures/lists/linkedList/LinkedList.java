@@ -19,6 +19,9 @@ public class LinkedList implements IListInt {
      * @param capacity The maximum range of the List
      */
     public LinkedList(int capacity) {
+        if (capacity < 1) {
+            throw new IllegalArgumentException("The capacity can't be less than 1");
+        }
         this.firstNode = null;
         this.lastNode = null;
         this.capacity = capacity;
@@ -29,14 +32,9 @@ public class LinkedList implements IListInt {
         return (firstNode == null);
     }
 
-    /**
-     * TODO : a implémenter
-     *
-     * @return
-     */
     @Override
     public boolean isFull() {
-        return false;
+        return (this.size() == this.capacity);
     }
 
     @Override
@@ -54,42 +52,76 @@ public class LinkedList implements IListInt {
 
     @Override
     public int capacity() {
-        return 0;
+        return capacity;
     }
 
     @Override
     public void addAtBeginning(int number) {
-
+        Node node = new Node(number);
+        if (this.isEmpty()) {
+            lastNode = node;
+        } else {
+            node.setNextNode(firstNode);
+        }
+        this.firstNode = node;
     }
 
     @Override
     public void addAtEnd(int number) {
-
         Node node = new Node(number);
-        if (this.isEmpty()) {
-            firstNode = node;
-            lastNode = node;
-        } else {
-            lastNode.setNextNode(node);
+        node.setNextNode(null);
+        this.lastNode = node;
+        Node currentNode = this.firstNode;
 
-            lastNode = node;
+        int currentIndex = 0;
+        if (isEmpty()) {
+            this.firstNode = node;
+        } else {
+            while (currentIndex < size() - 1) {
+                currentNode = currentNode.getNextNode();
+                currentIndex++;
+            }
+            currentNode.setNextNode(node);
         }
     }
 
     @Override
     public void addAt(int number, int index) {
+        Node node = new Node(number);
+        if (this.isFull()) {
+            throw new IllegalStateException("Overload capacity");
+        } else if (this.size() < index) {
+            throw new IllegalStateException("Index out of bound");
+        } else if (index == 0) {
+            this.addAtBeginning(number);
+        } else if (index == this.size()) {
+            this.addAtEnd(number);
+        } else {
+            Node currentNode = this.firstNode;
+
+            int currentIndex = 0;
+            while (currentIndex < index - 1) {
+                currentNode = currentNode.getNextNode();
+                currentIndex++;
+            }
+            node.setNextNode(currentNode.getNextNode());
+            currentNode.setNextNode(node);
+        }
 
     }
 
+    //TODO : Implémenter les remove
     @Override
     public int removeFirst() {
         return 0;
     }
 
+
     @Override
     public int removeLast() {
         return 0;
     }
+
 
     @Override
     public int removeAt(int index) {
@@ -113,6 +145,7 @@ public class LinkedList implements IListInt {
         return currentNode.getValue();
     }
 
+    //TODO : implémenter contains
     @Override
     public boolean contains(int number) {
         return false;

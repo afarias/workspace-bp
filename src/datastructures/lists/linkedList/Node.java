@@ -12,6 +12,7 @@ public class Node {
         this.nextNode = null;
     }
 
+
     public int getValue() {
         return value;
     }

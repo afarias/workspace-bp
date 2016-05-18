@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class LinkedListTest {
 
     @Test
-    public void getAt() throws Exception {
+    public void testGetAt() throws Exception {
         LinkedList array = new LinkedList(10);
         array.addAtEnd(2);
 
@@ -151,11 +151,13 @@ public class LinkedListTest {
         LinkedList array = new LinkedList(10);
         array.addAt(1, 0);
         array.addAt(2, 0);
+        array.addAt(3, 1);
 
         assertEquals(array.getAt(0), 2);
-        assertEquals(array.getAt(1), 1);
-    }
-
+        assertEquals(array.getAt(1), 3);
+        assertEquals(array.getAt(2), 1);
+            }
+    //TODO : Tester les Remove
     @Test
     public void testRemoveFirst() throws Exception {
         LinkedList array = new LinkedList(10);
@@ -187,7 +189,7 @@ public class LinkedListTest {
         assertEquals(removed, 1);
 
     }
-
+    //TODO : tester contains
     @Test
     public void contains1() throws Exception {
         LinkedList array = new LinkedList(10);
