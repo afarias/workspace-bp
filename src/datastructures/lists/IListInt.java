@@ -98,4 +98,10 @@ public interface IListInt {
      * @return <code>true</code> if the <code>number</code> is in the list and <code>false</code> otherwise. "
      */
     public boolean contains(int number);
+
+    /**
+     * This method is responsible for inverting the order of the list. The first element ends up at the end and the last
+     * element ends up being the first of the list, and so on.
+     */
+    public void revert();
 }
