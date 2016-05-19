@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**TODO : faire tourner tous les tests
+/**
  * Created by Admin on 16/05/2016.
  */
 public class LinkedListTest {
@@ -71,7 +71,7 @@ public class LinkedListTest {
     @Test
     public void testSize02() throws Exception {
         LinkedList linkedList = new LinkedList(10);
-        assertEquals(0,linkedList.size());
+        assertEquals(0, linkedList.size());
     }
 
     @Test
@@ -156,16 +156,16 @@ public class LinkedListTest {
         assertEquals(array.getAt(0), 2);
         assertEquals(array.getAt(1), 3);
         assertEquals(array.getAt(2), 1);
-            }
-    //TODO : Tester les Remove
+    }
+
     @Test
     public void testRemoveFirst() throws Exception {
-        LinkedList array = new LinkedList(10);
-        array.addAt(1, 0);
-        array.addAt(2, 0);
-        array.addAt(3, 1);
+        LinkedList list = new LinkedList(10);
+        list.addAt(1, 0);
+        list.addAt(2, 0);
+        list.addAt(3, 1);
 
-        int removed = array.removeFirst();
+        int removed = list.removeFirst();
         assertEquals(removed, 2);
     }
 
@@ -176,22 +176,87 @@ public class LinkedListTest {
         array.addAtEnd(2);
 
         int removed = array.removeLast();
-        assertEquals(removed, 2);
+        assertEquals(2, removed);
+        assertEquals(1, array.size());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testRemoveAt01() throws Exception {
+        LinkedList array = new LinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+
+        assertEquals(array.getAt(0), 1);
+        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(2), 3);
+        assertEquals(array.getAt(3), 4);
+        assertEquals(array.size(), 4);
+        array.removeAt(4);
     }
 
     @Test
-    public void testRemoveAt() throws Exception {
+    public void testRemoveAt02() throws Exception {
         LinkedList array = new LinkedList(10);
         array.addAtEnd(1);
         array.addAtEnd(2);
 
         int removed = array.removeAt(0);
-        assertEquals(removed, 1);
+        assertEquals(1, removed);
+        assertEquals(1, array.size());
+        assertEquals(array.getFirstNode(), array.getLastNode());
 
     }
-    //TODO : tester contains
+
     @Test
-    public void contains1() throws Exception {
+    public void testRemoveAt03() throws Exception {
+        LinkedList array = new LinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+
+        int removed = array.removeAt(1);
+        assertEquals(2, removed);
+        assertEquals(2, array.size());
+        assertEquals(array.getFirstNode().getNextNode(), array.getLastNode());
+
+    }
+
+    @Test
+    public void testRemoveAt04() throws Exception {
+        LinkedList array = new LinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+
+        int removed = array.removeAt(2);
+        assertEquals(3, removed);
+        assertEquals(3, array.size());
+        assertEquals(array.getFirstNode().getNextNode().getNextNode(), array.getLastNode());
+
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testRemoveFirst02() throws Exception {
+        LinkedList linkedList = new LinkedList(20);
+        linkedList.removeFirst();
+
+    }
+
+    @Test
+    public void testRemoveFirst03() throws Exception {
+        LinkedList linkedList = new LinkedList(20);
+        linkedList.addAtBeginning(1);
+        linkedList.removeFirst();
+
+        assertTrue(linkedList.isEmpty());
+
+    }
+
+    @Test
+    public void testContains01() throws Exception {
         LinkedList array = new LinkedList(10);
         array.addAtEnd(1);
         array.addAtEnd(2);
@@ -212,4 +277,31 @@ public class LinkedListTest {
         assertFalse(contains3);
 
     }
+    @Test
+    public void testrevert01() throws Exception {
+        LinkedList array = new LinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+        array.addAtEnd(5);
+        array.addAtEnd(6);
+        array.addAtEnd(7);
+        array.addAtEnd(8);
+        array.addAtEnd(9);
+        array.addAtEnd(10);
+        array.revert();
+
+        assertEquals(10, array.getAt(0));
+        assertEquals(9, array.getAt(1));
+        assertEquals(8, array.getAt(2));
+        assertEquals(7, array.getAt(3));
+        assertEquals(6, array.getAt(4));
+        assertEquals(5, array.getAt(5));
+        assertEquals(4, array.getAt(6));
+        assertEquals(3, array.getAt(7));
+        assertEquals(2, array.getAt(8));
+        assertEquals(1, array.getAt(9));
+    }
 }
+

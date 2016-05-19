@@ -1,5 +1,4 @@
 package datastructures.lists;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -211,4 +210,33 @@ public class ListIntArrayTest {
         assertEquals(array.getAt(4), (4));
         assertEquals(array.getAt(5), (5));
     }
+
+    //TODO : tester revert
+    @Test
+    public void testrevert01() throws Exception {
+        ListIntArray array = new ListIntArray(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+        array.addAtEnd(5);
+        array.addAtEnd(6);
+        array.addAtEnd(7);
+        array.addAtEnd(8);
+        array.addAtEnd(9);
+        array.addAtEnd(10);
+        array.revert();
+
+        assertEquals(10, array.getAt(0));
+        assertEquals(9, array.getAt(1));
+        assertEquals(8, array.getAt(2));
+        assertEquals(7, array.getAt(3));
+        assertEquals(6, array.getAt(4));
+        assertEquals(5, array.getAt(5));
+        assertEquals(4, array.getAt(6));
+        assertEquals(3, array.getAt(7));
+        assertEquals(2, array.getAt(8));
+        assertEquals(1, array.getAt(9));
+    }
+
 }

@@ -3,7 +3,6 @@ package datastructures.lists.linkedList;
 import datastructures.lists.IListInt;
 
 /**
- * TODO : implements all methods
  * This class is responsible for implementing a list of integers using an linked list strategy.
  * Created by Admin on 16/05/2016.
  */
@@ -25,6 +24,18 @@ public class LinkedList implements IListInt {
         this.firstNode = null;
         this.lastNode = null;
         this.capacity = capacity;
+    }
+
+    public Node getFirstNode() {
+        return firstNode;
+    }
+
+    public Node getLastNode() {
+        return lastNode;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     @Override
@@ -110,22 +121,79 @@ public class LinkedList implements IListInt {
 
     }
 
-    //TODO : Implémenter les remove
     @Override
     public int removeFirst() {
-        return 0;
+        // cas vide : renvoyer exception
+        if (isEmpty()) {
+            throw new IllegalStateException("Can't remove data from empty list");
+        }
+        // cas avec une seule valeur ?
+        if (this.size() == 1) {
+            int extractedValue = this.firstNode.getValue();
+            this.firstNode.setNextNode(null);
+        }
+
+        // Définir le deuxième terme comme étant le premier de la liste
+        Node extractedNode = this.firstNode;
+        this.firstNode = this.firstNode.getNextNode();
+        return extractedNode.getValue();
     }
 
 
     @Override
     public int removeLast() {
-        return 0;
+        // cas vide ou une seule valeur
+        if (this.size() < 1) {
+            return this.removeFirst();
+        }
+
+        // cas général
+        Node extractedNode = this.lastNode;
+
+        int i = 0;
+        Node aNode = this.firstNode;
+        for (i = 0; i < this.size() - 2; i++) {
+            aNode = aNode.getNextNode();
+        }
+
+        aNode.setNextNode(null);
+        this.lastNode = aNode;
+
+        return extractedNode.getValue();
     }
 
 
     @Override
     public int removeAt(int index) {
-        return 0;
+        // cas vide ou une seule valeur
+        if (this.size() < 1) {
+            return this.removeFirst();
+        }
+
+        // pas de node à l'index
+        if (index > this.size() - 1) {
+            throw new IllegalArgumentException("the list don't have any value at this index");
+        }
+
+        // cas où on retire le dernier
+        if (index == this.size() - 1) {
+            return this.removeLast();
+        }
+
+        // cas où on retire le premier
+        if (index == 0) {
+            return this.removeFirst();
+        }
+
+        // cas général
+        int i = 0;
+        Node aNode = this.firstNode;
+        for (i = 0; i <= index - 2; i++) {
+            aNode = aNode.getNextNode();
+        }
+        int extracted = aNode.getNextNode().getValue();
+        aNode.setNextNode(aNode.getNextNode().getNextNode());
+        return extracted;
     }
 
     @Override
@@ -145,9 +213,28 @@ public class LinkedList implements IListInt {
         return currentNode.getValue();
     }
 
-    //TODO : implémenter contains
     @Override
     public boolean contains(int number) {
+        int i = 0;
+        Node aNode = this.firstNode;
+        for (i = 0; i <= this.size() -1; i++) {
+            if (aNode.getValue() == number){
+                return true;
+            }
+            aNode = aNode.getNextNode();
+        }
         return false;
+    }
+
+    @Override
+    public void revert() {
+        LinkedList transferList = new LinkedList(this.capacity);
+        Node currentNode = this.firstNode;
+        for (int i=0; i<size(); i++){
+            transferList.addAtBeginning(currentNode.getValue());
+            currentNode = currentNode.getNextNode();
+        }
+        this.firstNode = transferList.firstNode;
+        this.lastNode = transferList.lastNode;
     }
 }

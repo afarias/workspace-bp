@@ -161,4 +161,10 @@ public class ListIntArray implements IListInt {
         }
         return false;
     }
+
+    //TODO : implement revert en ListArray
+    @Override
+    public void revert() {
+
+    }
 }
