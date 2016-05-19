@@ -211,7 +211,6 @@ public class ListIntArrayTest {
         assertEquals(array.getAt(5), (5));
     }
 
-    //TODO : tester revert
     @Test
     public void testrevert01() throws Exception {
         ListIntArray array = new ListIntArray(10);

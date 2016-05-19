@@ -103,6 +103,10 @@ public class ListIntArray implements IListInt {
         if (isFull()) {
             throw new IllegalStateException("Le tableau est plein");
         }
+
+        if (this.size() < index) {
+            throw new IllegalStateException("Index out of bound");
+        }
         this.shiftRight(index);
         myList[index] = number;
         lastIndex++;
@@ -162,9 +166,16 @@ public class ListIntArray implements IListInt {
         return false;
     }
 
-    //TODO : implement revert en ListArray
     @Override
     public void revert() {
+        // We will use a temporary List "transferList" to store the values on opposite order.
+        ListIntArray transferList = new ListIntArray(this.capacity());
 
+        for (int i=0; i<size(); i++){
+            transferList.addAtBeginning(this.getAt(i));
+        }
+        // We assign on our current List the value of the transferList.
+        this.myList = transferList.myList;
+        this.lastIndex = transferList.lastIndex;
     }
 }

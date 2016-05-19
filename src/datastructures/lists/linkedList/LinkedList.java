@@ -217,8 +217,8 @@ public class LinkedList implements IListInt {
     public boolean contains(int number) {
         int i = 0;
         Node aNode = this.firstNode;
-        for (i = 0; i <= this.size() -1; i++) {
-            if (aNode.getValue() == number){
+        for (i = 0; i <= this.size() - 1; i++) {
+            if (aNode.getValue() == number) {
                 return true;
             }
             aNode = aNode.getNextNode();
@@ -228,12 +228,14 @@ public class LinkedList implements IListInt {
 
     @Override
     public void revert() {
+        // We will use a temporary List "transferList" to store the values on opposite order.
         LinkedList transferList = new LinkedList(this.capacity);
         Node currentNode = this.firstNode;
-        for (int i=0; i<size(); i++){
+        for (int i = 0; i < size(); i++) {
             transferList.addAtBeginning(currentNode.getValue());
             currentNode = currentNode.getNextNode();
         }
+        // We assign on our current List the value of the transferList.
         this.firstNode = transferList.firstNode;
         this.lastNode = transferList.lastNode;
     }
