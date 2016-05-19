@@ -5,7 +5,7 @@ package datastructures.lists.linkedList;
  */
 public class Node {
     private int value;
-    private Node nextNode;
+    protected Node nextNode;
 
     public Node(int value) {
         this.value = value;

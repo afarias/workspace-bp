@@ -1,88 +1,38 @@
 package datastructures.lists.linkedList;
 
-import datastructures.lists.IListInt;
-
 /**
- * This class is responsible for implementing a list of integers using an linked list strategy.
- * Created by Admin on 16/05/2016.
+ * Created by Admin on 19/05/2016.
  */
-public class LinkedList implements IListInt {
-
-    protected Node firstNode;
-    protected Node lastNode;
-    protected int capacity;
+public class DoubleLinkedList extends LinkedList {
 
     /**
      * This constructor is responsible for creating a new list with capacity
      *
      * @param capacity The maximum range of the List
      */
-    public LinkedList(int capacity) {
-        if (capacity < 1) {
-            throw new IllegalArgumentException("The capacity can't be less than 1");
-        }
-        this.firstNode = null;
-        this.lastNode = null;
-        this.capacity = capacity;
-    }
-
-    public Node getFirstNode() {
-        return firstNode;
-    }
-
-    public Node getLastNode() {
-        return lastNode;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return (firstNode == null);
-    }
-
-    @Override
-    public boolean isFull() {
-        return (this.size() == this.capacity);
-    }
-
-    @Override
-    public int size() {
-        /* With current we traverse the list */
-        Node currentNode = this.firstNode;
-        int size = 0;
-
-        while (currentNode != null) {
-            size++;
-            currentNode = currentNode.getNextNode();
-        }
-        return size;
-    }
-
-    @Override
-    public int capacity() {
-        return capacity;
+    public DoubleLinkedList(int capacity) {
+        super(capacity);
     }
 
     @Override
     public void addAtBeginning(int number) {
-        Node node = new Node(number);
+        DoubleNode node = new DoubleNode(number);
         if (this.isEmpty()) {
-            this.lastNode = node;
+            lastNode = node;
         } else {
-            node.setNextNode(this.firstNode);
+            node.setNextNode(firstNode);
+
         }
+        node.setNextNode(firstNode.getNextNode());
         this.firstNode = node;
     }
-
+/**
     @Override
     public void addAtEnd(int number) {
-        Node node = new Node(number);
+        DoubleNode node = new DoubleNode(number);
         node.setNextNode(null);
         this.lastNode = node;
-        Node currentNode = this.firstNode;
+        DoubleNode currentNode = this.firstNode;
 
         int currentIndex = 0;
         if (isEmpty()) {
@@ -139,7 +89,6 @@ public class LinkedList implements IListInt {
         return extractedNode.getValue();
     }
 
-
     @Override
     public int removeLast() {
         // cas vide ou une seule valeur
@@ -161,7 +110,6 @@ public class LinkedList implements IListInt {
 
         return extractedNode.getValue();
     }
-
 
     @Override
     public int removeAt(int index) {
@@ -239,4 +187,5 @@ public class LinkedList implements IListInt {
         this.firstNode = transferList.firstNode;
         this.lastNode = transferList.lastNode;
     }
+**/
 }
