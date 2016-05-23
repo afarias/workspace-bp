@@ -116,8 +116,31 @@ public class DoubleLinkedListTest {
     }
 
     @Test
+    public void testAddAtBeginning03() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(10);
+        array.revert();
+        array.addAtBeginning(1);
+        array.addAtBeginning(2);
+
+        assertEquals(array.getAt(1), 1);
+        assertEquals(array.getAt(0), 2);
+    }
+
+    @Test
     public void testAddAtEnd01() throws Exception {
         DoubleLinkedList array = new DoubleLinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+
+        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(0), 1);
+
+    }
+
+    @Test
+    public void testAddAtEnd02() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(10);
+        array.revert();
         array.addAtEnd(1);
         array.addAtEnd(2);
 
@@ -147,7 +170,31 @@ public class DoubleLinkedListTest {
     @Test
     public void testAddAt02() throws Exception {
 
+        DoubleLinkedList array = new DoubleLinkedList(3);
+        array.addAt(1, 0);
+        array.addAt(2, 0);
+        array.addAt(3, 1);
+
+        assertEquals(array.getAt(0), 2);
+        assertEquals(array.getAt(1), 3);
+        assertEquals(array.getAt(2), 1);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testAddAt04() throws Exception {
+
+        DoubleLinkedList array = new DoubleLinkedList(3);
+        array.addAt(1, 0);
+        array.addAt(2, 0);
+        array.addAt(3, 1);
+        array.addAt(1, 6);
+    }
+
+    @Test
+    public void testAddAt03() throws Exception {
+
         DoubleLinkedList array = new DoubleLinkedList(10);
+        array.revert();
         array.addAt(1, 0);
         array.addAt(2, 0);
         array.addAt(3, 1);
@@ -237,6 +284,22 @@ public class DoubleLinkedListTest {
 
     }
 
+    @Test
+    public void testRemoveAt05() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(10);
+        array.revert();
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+
+        int removed = array.removeAt(2);
+        assertEquals(3, removed);
+        assertEquals(3, array.size());
+        assertEquals(array.getFirstNode().getNextNode().getNextNode(), array.getLastNode());
+
+    }
+
     @Test(expected = IllegalStateException.class)
     public void testRemoveFirst02() throws Exception {
         DoubleLinkedList DoubleLinkedList = new DoubleLinkedList(20);
@@ -246,11 +309,20 @@ public class DoubleLinkedListTest {
 
     @Test
     public void testRemoveFirst03() throws Exception {
-        DoubleLinkedList DoubleLinkedList = new DoubleLinkedList(20);
-        DoubleLinkedList.addAtBeginning(1);
-        DoubleLinkedList.removeFirst();
+        DoubleLinkedList doubleLinkedList = new DoubleLinkedList(20);
+        doubleLinkedList.addAtBeginning(1);
+        doubleLinkedList.removeFirst();
 
-        assertTrue(DoubleLinkedList.isEmpty());
+        assertTrue(doubleLinkedList.isEmpty());
+
+    }@Test
+    public void testRemoveFirst04() throws Exception {
+        DoubleLinkedList doubleLinkedList = new DoubleLinkedList(20);
+        doubleLinkedList.revert();
+        doubleLinkedList.addAtBeginning(1);
+        doubleLinkedList.removeFirst();
+
+        assertTrue(doubleLinkedList.isEmpty());
 
     }
 
@@ -276,6 +348,7 @@ public class DoubleLinkedListTest {
         assertFalse(contains3);
 
     }
+
     @Test
     public void testrevert01() throws Exception {
         DoubleLinkedList array = new DoubleLinkedList(10);
