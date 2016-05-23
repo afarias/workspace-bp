@@ -1,9 +1,18 @@
 package datastructures.lists.linkedList;
 
-/**
+import datastructures.lists.IListInt;
+
+/** TODO : Implémenter la classe
+ * TODO : marquer les TODO individuels pour chaque méthode
+ * TODO : créer les tests
  * Created by Admin on 19/05/2016.
  */
-public class DoubleLinkedList extends LinkedList {
+public class DoubleLinkedList implements IListInt {
+
+    protected Node firstNode;
+    protected Node lastNode;
+    protected int capacity;
+    protected boolean regularDirection;
 
     /**
      * This constructor is responsible for creating a new list with capacity
@@ -11,28 +20,73 @@ public class DoubleLinkedList extends LinkedList {
      * @param capacity The maximum range of the List
      */
     public DoubleLinkedList(int capacity) {
-        super(capacity);
+        if (capacity < 1) {
+            throw new IllegalArgumentException("The capacity can't be less than 1");
+        }
+        this.firstNode = null;
+        this.lastNode = null;
+        this.capacity = capacity;
+        this.regularDirection = true;
     }
 
+    public Node getFirstNode() {
+        return firstNode;
+    }
+
+    public Node getLastNode() {
+        return lastNode;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (firstNode == null);
+    }
+
+    @Override
+    public boolean isFull() {
+        return (this.size() == this.capacity);
+    }
+
+    @Override
+    public int size() {
+        /* With current we traverse the list */
+        Node currentNode = this.firstNode;
+        int size = 0;
+
+        while (currentNode != null) {
+            size++;
+            currentNode = currentNode.getNextNode();
+        }
+        return size;
+    }
+
+    @Override
+    public int capacity() {
+        return capacity;
+    }
+
+    //TODO : implémenter les addAt - rajouter les previousNode
     @Override
     public void addAtBeginning(int number) {
-        DoubleNode node = new DoubleNode(number);
+        Node node = new Node(number);
         if (this.isEmpty()) {
-            lastNode = node;
+            this.lastNode = node;
         } else {
-            node.setNextNode(firstNode);
-
+            node.setNextNode(this.firstNode);
         }
-        node.setNextNode(firstNode.getNextNode());
         this.firstNode = node;
     }
-/**
+
     @Override
     public void addAtEnd(int number) {
-        DoubleNode node = new DoubleNode(number);
+        Node node = new Node(number);
         node.setNextNode(null);
         this.lastNode = node;
-        DoubleNode currentNode = this.firstNode;
+        Node currentNode = this.firstNode;
 
         int currentIndex = 0;
         if (isEmpty()) {
@@ -71,6 +125,7 @@ public class DoubleLinkedList extends LinkedList {
 
     }
 
+    // TODO : implémenter les removeAt - retirer les previousNode
     @Override
     public int removeFirst() {
         // cas vide : renvoyer exception
@@ -88,6 +143,7 @@ public class DoubleLinkedList extends LinkedList {
         this.firstNode = this.firstNode.getNextNode();
         return extractedNode.getValue();
     }
+
 
     @Override
     public int removeLast() {
@@ -110,6 +166,7 @@ public class DoubleLinkedList extends LinkedList {
 
         return extractedNode.getValue();
     }
+
 
     @Override
     public int removeAt(int index) {
@@ -143,7 +200,7 @@ public class DoubleLinkedList extends LinkedList {
         aNode.setNextNode(aNode.getNextNode().getNextNode());
         return extracted;
     }
-
+    // TODO : optionnel implémenter le getAt pour que ca marche dans les deux sens.
     @Override
     public int getAt(int index) {
 
@@ -173,7 +230,7 @@ public class DoubleLinkedList extends LinkedList {
         }
         return false;
     }
-
+    // TODO : implémenter pour que ca coute seulement 1 et pas n
     @Override
     public void revert() {
         // We will use a temporary List "transferList" to store the values on opposite order.
@@ -187,5 +244,4 @@ public class DoubleLinkedList extends LinkedList {
         this.firstNode = transferList.firstNode;
         this.lastNode = transferList.lastNode;
     }
-**/
 }
