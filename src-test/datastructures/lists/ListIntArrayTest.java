@@ -6,12 +6,22 @@ import static org.junit.Assert.*;
 
 public class ListIntArrayTest {
 
+    /**
+     * A new fresh list should be empty :)
+     * @throws Exception
+     */
     @Test
     public void testIsEmpty() throws Exception {
+
         ListIntArray emptyArray = new ListIntArray(10);
+
         Assert.assertEquals(true, emptyArray.isEmpty());
     }
 
+    /**
+     * Only one element is add, then the list is not empty.
+     * @throws Exception
+     */
     @Test
     public void testIsEmpty02() throws Exception {
         ListIntArray emptyArray = new ListIntArray(10);

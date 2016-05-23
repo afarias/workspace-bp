@@ -3,19 +3,42 @@ package datastructures.lists.linkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
- * Created by Admin on 23/05/2016.
+ * A class for testing the Double Linked List. The big hypothesis on these tests is that the method addAtEnd is working
+ * fine.
  */
 public class DoubleLinkedListTest {
+
     @Test
-    public void testGetAt() throws Exception {
-        DoubleLinkedList array = new DoubleLinkedList(10);
-        array.addAtEnd(2);
+    public void testSize01() throws Exception {
+        DoubleLinkedList DoubleLinkedList = new DoubleLinkedList(10);
+        assertEquals(0, DoubleLinkedList.size());
+    }
 
-        assertEquals(2, array.getAt(0));
+    @Test
+    public void testSize02() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(2);
+        array.addAtEnd(1);
 
+        assertEquals(1, array.size());
+    }
+
+    @Test
+    public void testSize0N() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(2);
+
+        /* A random number of ints are added to the list */
+        Random random = new Random();
+        int intsToInsert = random.nextInt(1000);
+        for (int i = 0; i < intsToInsert; i++) {
+            array.addAtEnd(random.nextInt(2000));
+        }
+
+        assertEquals(intsToInsert, array.size());
     }
 
     @Test
@@ -30,6 +53,25 @@ public class DoubleLinkedListTest {
         emptyArray.addAtEnd(10);
 
         Assert.assertEquals(false, emptyArray.isEmpty());
+    }
+
+    @Test
+    public void testAddAtEnd01() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(10);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+
+        assertEquals(array.getAt(1), 2);
+        assertEquals(array.getAt(0), 1);
+    }
+
+    @Test
+    public void testGetAt() throws Exception {
+        DoubleLinkedList array = new DoubleLinkedList(10);
+        array.addAtEnd(2);
+
+        assertEquals(2, array.getAt(0));
+
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -59,19 +101,6 @@ public class DoubleLinkedListTest {
         assertTrue(emptyArray.isFull());
     }
 
-    @Test
-    public void testSize01() throws Exception {
-        DoubleLinkedList array = new DoubleLinkedList(2);
-        array.addAtEnd(1);
-
-        assertEquals(1, array.size());
-    }
-
-    @Test
-    public void testSize02() throws Exception {
-        DoubleLinkedList DoubleLinkedList = new DoubleLinkedList(10);
-        assertEquals(0, DoubleLinkedList.size());
-    }
 
     @Test
     public void testCapacity() throws Exception {
@@ -115,16 +144,6 @@ public class DoubleLinkedListTest {
         assertEquals(array.getAt(0), 2);
     }
 
-    @Test
-    public void testAddAtEnd01() throws Exception {
-        DoubleLinkedList array = new DoubleLinkedList(10);
-        array.addAtEnd(1);
-        array.addAtEnd(2);
-
-        assertEquals(array.getAt(1), 2);
-        assertEquals(array.getAt(0), 1);
-
-    }
 
     @Test
     public void testAddAt00() throws Exception {
@@ -276,6 +295,7 @@ public class DoubleLinkedListTest {
         assertFalse(contains3);
 
     }
+
     @Test
     public void testrevert01() throws Exception {
         DoubleLinkedList array = new DoubleLinkedList(10);
