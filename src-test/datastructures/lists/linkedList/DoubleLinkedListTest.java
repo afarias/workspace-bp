@@ -322,5 +322,26 @@ public class DoubleLinkedListTest {
         assertEquals(2, array.getAt(8));
         assertEquals(1, array.getAt(9));
     }
+    @Test
+    public void testComplete01() throws Exception{
+        DoubleLinkedList array = new DoubleLinkedList(5);
+        array.addAtEnd(1);
+        array.addAtEnd(2);
+        array.addAtEnd(3);
+        array.addAtEnd(4);
+        array.addAtEnd(5);
+        array.revert();
+        int a = array.removeAt(2);
+        array.revert();
+        int b = array.removeLast();
+        array.revert();
 
+        assertEquals(4, array.getFirstNode().getValue());
+        assertEquals(2, array.getAt(1));
+        assertEquals(1, array.getLastNode().getValue());
+        assertEquals(3, a);
+        assertEquals(5, b);
+        assertEquals(3, array.size());
+
+    }
 }

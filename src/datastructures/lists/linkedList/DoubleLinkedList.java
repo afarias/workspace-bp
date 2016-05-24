@@ -237,11 +237,11 @@ public class DoubleLinkedList implements IListInt {
         int extracted = 0;
         if (regularDirection == false){
             for (i = 0; i <= index - 2; i++) {
-                aNode = aNode.getNextNode();
+                aNode = aNode.getPreviousNode();
             }
-            extracted = aNode.getNextNode().getValue();
-            aNode.setNextNode(aNode.getNextNode().getNextNode());
-
+            extracted = aNode.getPreviousNode().getValue();
+            aNode.setPreviousNode(aNode.getPreviousNode().getPreviousNode());
+            aNode.getPreviousNode().setNextNode(aNode);
         }else {
             for (i = 0; i <= index - 2; i++) {
                 aNode = aNode.getNextNode();
@@ -294,8 +294,7 @@ public class DoubleLinkedList implements IListInt {
     @Override
     public void revert() {
         this.regularDirection = !this.regularDirection;
-        DoubleNode transferNode = new DoubleNode(0);
-        this.firstNode = transferNode;
+        DoubleNode transferNode = this.firstNode;
         this.firstNode = this.lastNode;
         this.lastNode = transferNode;
     }
