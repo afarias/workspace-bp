@@ -2,25 +2,22 @@ package datastructures.lists.linkedList;
 
 import datastructures.lists.IListInt;
 
-/**
- * TODO : Implémenter la classe
- * TODO : marquer les TODO individuels pour chaque méthode
- * TODO : créer les tests
+/** This Object describe a List that can be used in both directions.
  * Created by Admin on 19/05/2016.
  */
-public class DoubleLinkedList implements IListInt {
+class DoubleLinkedList implements IListInt {
 
-    protected DoubleNode firstNode;
-    protected DoubleNode lastNode;
-    protected int capacity;
-    protected boolean regularDirection;
+    private DoubleNode firstNode;
+    private DoubleNode lastNode;
+    private int capacity;
+    private boolean regularDirection;
 
     /**
      * This constructor is responsible for creating a new list with capacity
      *
      * @param capacity The maximum range of the List
      */
-    public DoubleLinkedList(int capacity) {
+DoubleLinkedList(int capacity) {
         if (capacity < 1) {
             throw new IllegalArgumentException("The capacity can't be less than 1");
         }
@@ -30,15 +27,15 @@ public class DoubleLinkedList implements IListInt {
         this.regularDirection = true;
     }
 
-    public DoubleNode getFirstNode() {
+DoubleNode getFirstNode() {
         return firstNode;
     }
 
-    public DoubleNode getLastNode() {
+DoubleNode getLastNode() {
         return lastNode;
     }
 
-    public int getCapacity() {
+int getCapacity() {
         return capacity;
     }
 
@@ -57,7 +54,7 @@ public class DoubleLinkedList implements IListInt {
         /* With current we traverse the list */
         DoubleNode currentNode = this.firstNode;
         int size = 0;
-        if (regularDirection == false) {
+        if (!regularDirection) {
             while (currentNode != null) {
                 size++;
                 currentNode = currentNode.getPreviousNode();
@@ -82,7 +79,7 @@ public class DoubleLinkedList implements IListInt {
         if (this.isEmpty()) {
             this.lastNode = node;
         } else {
-            if (regularDirection == false) {
+            if (!regularDirection) {
                 node.setPreviousNode(this.firstNode);
                 this.firstNode.setNextNode(node);
             } else {
@@ -99,7 +96,7 @@ public class DoubleLinkedList implements IListInt {
         if (this.isEmpty()) {
             this.firstNode = node;
         } else {
-            if (regularDirection == false) {
+            if (!regularDirection) {
                 node.setNextNode(this.lastNode);
                 this.lastNode.setPreviousNode(node);
             } else {
@@ -127,7 +124,7 @@ public class DoubleLinkedList implements IListInt {
             DoubleNode currentNode = this.firstNode;
 
             int currentIndex = 0;
-            if (regularDirection == false) {
+            if (!regularDirection) {
                 while (currentIndex < index - 1) {
                     currentNode = currentNode.getPreviousNode();
                     currentIndex++;
@@ -150,7 +147,6 @@ public class DoubleLinkedList implements IListInt {
 
     }
 
-    // TODO : implémenter les removeAt - retirer les previousNode
     @Override
     public int removeFirst() {
         // cas vide : renvoyer exception
@@ -160,17 +156,16 @@ public class DoubleLinkedList implements IListInt {
         // cas avec une seule valeur ?
         if (this.size() == 1) {
             int extractedValue = this.firstNode.getValue();
-            if (regularDirection == false) {
+            if (!regularDirection) {
                 this.firstNode.setPreviousNode(null);
             } else {
 
-                this.firstNode.setNextNode(null);
-            }
+                this.firstNode.setNextNode(null);}
         }
 
         // Définir le deuxième terme comme étant le premier de la liste
         DoubleNode extractedNode = this.firstNode;
-        if (regularDirection == false) {
+        if (!regularDirection) {
             this.firstNode = this.firstNode.getPreviousNode();
         } else {
             this.firstNode = this.firstNode.getNextNode();
@@ -188,24 +183,28 @@ public class DoubleLinkedList implements IListInt {
         // cas avec une seule valeur ?
         if (this.size() == 1) {
             int extractedValue = this.firstNode.getValue();
-            if (regularDirection == false) {
-                this.firstNode.setPreviousNode(null);
+            if (!regularDirection) {
+                this.firstNode = null;
+                return extractedValue;
             } else {
 
-                this.firstNode.setNextNode(null);
+                this.firstNode = null;
+                return extractedValue;
             }
         }
-
         // Définir le deuxième terme comme étant le dernier de la liste
-        DoubleNode extractedNode = this.lastNode;
-        if (regularDirection == false) {
+
+        else {
+            DoubleNode extractedNode = this.lastNode;
+
+            if (!regularDirection) {
             this.lastNode = this.lastNode.getNextNode();
             this.lastNode.setPreviousNode(null);
         } else {
             this.lastNode = this.lastNode.getPreviousNode();
             this.lastNode.setNextNode(null);
         }
-        return extractedNode.getValue();
+        return extractedNode.getValue();}
     }
 
 
@@ -232,10 +231,10 @@ public class DoubleLinkedList implements IListInt {
         }
 
         // cas général
-        int i = 0;
+        int i;
         DoubleNode aNode = this.firstNode;
-        int extracted = 0;
-        if (regularDirection == false){
+        int extracted;
+        if (!regularDirection){
             for (i = 0; i <= index - 2; i++) {
                 aNode = aNode.getPreviousNode();
             }
@@ -262,7 +261,7 @@ public class DoubleLinkedList implements IListInt {
 
         DoubleNode currentNode = this.firstNode;
         int currentIndex = 0;
-        if (regularDirection == false) {
+        if (!regularDirection) {
             while (currentIndex < index) {
                 currentNode = currentNode.getPreviousNode();
                 currentIndex++;
@@ -280,7 +279,7 @@ public class DoubleLinkedList implements IListInt {
 
     @Override
     public boolean contains(int number) {
-        int i = 0;
+        int i;
         DoubleNode aNode = this.firstNode;
         for (i = 0; i <= this.size() - 1; i++) {
             if (aNode.getValue() == number) {

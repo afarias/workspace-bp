@@ -1,37 +1,37 @@
 package datastructures.lists.linkedList;
 
 /**
- * TODO : implémenter
+ * This object is the minimal entity of our List.
  * Created by Admin on 19/05/2016.
  */
-public class DoubleNode {
-    protected DoubleNode nextNode;
-    protected DoubleNode previousNode;
+class DoubleNode {
+    private DoubleNode nextNode;
+    private DoubleNode previousNode;
     private int value;
 
-    public DoubleNode(int value) {
+    DoubleNode(int value) {
         this.value = value;
         this.nextNode = null;
         this.previousNode = null;
     }
 
-    public DoubleNode getPreviousNode() {
+    DoubleNode getPreviousNode() {
         return previousNode;
     }
 
-    public void setPreviousNode(DoubleNode previousNode) {
+    void setPreviousNode(DoubleNode previousNode) {
         this.previousNode = previousNode;
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 
-    public DoubleNode getNextNode() {
+    DoubleNode getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(DoubleNode nextNode) {
+    void setNextNode(DoubleNode nextNode) {
         this.nextNode = nextNode;
     }
 
