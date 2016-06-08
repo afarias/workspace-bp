@@ -4,7 +4,7 @@ import javax.servlet.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/** This class is responsible for TODO A documenter
+/** This class is responsible for making an addition
  * Created by andres on 6/6/16.
  */
 public class JeanServletLifeCycle implements Servlet {

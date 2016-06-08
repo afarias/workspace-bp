@@ -1,11 +1,13 @@
 package cl.blueprints.jean.math;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
+@WebServlet(name = "sum", urlPatterns = "/sum")
 public class Additioner implements Servlet {
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
 
@@ -31,6 +33,8 @@ public class Additioner implements Servlet {
         writer.println("<HEADER><TITLE>Ma page</TITLE></HEADER>");
         writer.println("<BODY><H1>"+op1+"+"+op2+"="+ (operator1+operator2) +"</H1></BODY>");
         writer.println("</HTML>");
+
+        // servletRequest.getRequestDispatcher("sucess.html").forward(servletRequest, servletResponse);
     }
 
     @Override
