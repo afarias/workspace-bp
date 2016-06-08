@@ -29,7 +29,7 @@ public class Additioner implements Servlet {
 
         writer.println("<HTML>");
         writer.println("<HEADER><TITLE>Ma page</TITLE></HEADER>");
-        writer.println("<BODY><H1>"+op1+"+"+op2+"="+ operator1+operator2 +"</H1></BODY>");
+        writer.println("<BODY><H1>"+op1+"+"+op2+"="+ (operator1+operator2) +"</H1></BODY>");
         writer.println("</HTML>");
     }
 
