@@ -1,17 +1,14 @@
-package cl.blueprints.jean.lifecycle;
+package cl.blueprints.jean.math;
 
 import javax.servlet.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/** This class is responsible for TODO A documenter
- * Created by andres on 6/6/16.
- */
-public class JeanServletLifeCycle implements Servlet {
 
+public class Additioner implements Servlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
-        System.out.println("JEAN A DEMARRE!");
+
     }
 
     @Override
@@ -21,12 +18,18 @@ public class JeanServletLifeCycle implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+        String op1 = servletRequest.getParameter("op1");
+        String op2 = servletRequest.getParameter("op2");
+
+        int operator1 = Integer.parseInt(op1);
+        int operator2 = Integer.parseInt(op2);
+
 
         PrintWriter writer = servletResponse.getWriter();
 
         writer.println("<HTML>");
         writer.println("<HEADER><TITLE>Ma page</TITLE></HEADER>");
-        writer.println("<BODY><H1>Je m'appele Jean!</H1></BODY>");
+        writer.println("<BODY><H1>"+op1+"+"+op2+"="+ operator1+operator2 +"</H1></BODY>");
         writer.println("</HTML>");
     }
 
@@ -37,6 +40,6 @@ public class JeanServletLifeCycle implements Servlet {
 
     @Override
     public void destroy() {
-        System.out.println("JEAN A TERMINE!");
+
     }
 }
