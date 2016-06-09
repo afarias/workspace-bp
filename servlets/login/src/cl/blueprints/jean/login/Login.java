@@ -11,15 +11,19 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "login", urlPatterns = "/login")
 public class Login implements Servlet{
+
+    private ServletConfig servletConfig;
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
-
+        this.servletConfig = servletConfig;
     }
 
     @Override
     public ServletConfig getServletConfig() {
-        return null;
+        return this.servletConfig;
     }
+
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
 
