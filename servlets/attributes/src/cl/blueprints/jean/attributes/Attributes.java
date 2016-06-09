@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-/**
+/** This method is responsible for adding attributes in the user session and for showing it
  * Created by Admin on 08/06/2016.
  */
 
@@ -22,7 +22,8 @@ public class Attributes extends HttpServlet {
         String name = req.getParameter("name");
         String value = req.getParameter("value");
         HttpSession session = req.getSession(true);
-        session.setAttribute(name, value);
+        if (name!=null||value!=null){
+        session.setAttribute(name, value);}
 
         PrintWriter writer = resp.getWriter();
         writer.println("<!DOCTYPE html>");
@@ -59,9 +60,7 @@ public class Attributes extends HttpServlet {
             writer.println("<td>"+session.getAttribute(attributeName)+"</td>");
             writer.println("<td>");
             writer.println("<form action=\"delete\" method=\"get\">");
-            writer.println("<input type=\"text\" name=\"username\">username");
-            // TODO : à compléter pour que ca envoie la requête get de Delete avec le paramètre du nom de l'attribut
-            // <input type="text" name="username">username
+            writer.println("<input type=\"hidden\" name=\"todelete\" value=\""+attributeName+"\">");
             writer.println("<button type=\"submit\">Delete</button>");
             writer.println("</form>");
             writer.println("</td>");
