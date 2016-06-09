@@ -7,15 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**This method is responsible for removing attributes in the user session
+/**
+ * This method is responsible for adding an attribute to the user session
  * Created by Admin on 09/06/2016.
  */
-public class Delete extends HttpServlet {
+public class Add extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String value = req.getParameter("value");
         HttpSession session = req.getSession(true);
-        req.getParameter("todelete");
-        session.removeAttribute(req.getParameter("todelete"));
+        session.setAttribute(name, value);
+
         req.getRequestDispatcher("manage").forward(req, resp);
+
     }
+
 }

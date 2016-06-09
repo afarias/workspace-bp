@@ -11,19 +11,15 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-/** This method is responsible for adding attributes in the user session and for showing it
+/** This method is responsible for showing all the saved attributes
  * Created by Admin on 08/06/2016.
  */
 
-public class Attributes extends HttpServlet {
+public class Manager extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String value = req.getParameter("value");
         HttpSession session = req.getSession(true);
-        if (name!=null||value!=null){
-        session.setAttribute(name, value);}
 
         PrintWriter writer = resp.getWriter();
         writer.println("<!DOCTYPE html>");
@@ -35,7 +31,7 @@ public class Attributes extends HttpServlet {
         writer.println("</head>");
         writer.println("<body>");
         writer.println("<h1>Add Parameter</h1>");
-        writer.println("<form action=\"attributes\" method=\"get\">");
+        writer.println("<form action=\"add\" method=\"get\">");
         writer.println("    Name :");
         writer.println("    <input type=\"text\" name=\"name\">");
         writer.println("    <br>");
