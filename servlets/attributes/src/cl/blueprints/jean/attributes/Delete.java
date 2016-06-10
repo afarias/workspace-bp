@@ -16,6 +16,6 @@ public class Delete extends HttpServlet {
         HttpSession session = req.getSession(true);
         req.getParameter("todelete");
         session.removeAttribute(req.getParameter("todelete"));
-        req.getRequestDispatcher("manage").forward(req, resp);
+        req.getRequestDispatcher("manager.jsp").forward(req, resp);
     }
 }

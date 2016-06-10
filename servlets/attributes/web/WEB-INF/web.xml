@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <servlet>
+    <!--<servlet>
         <servlet-name>manage</servlet-name>
         <servlet-class>cl.blueprints.jean.attributes.Manager</servlet-class>
-    </servlet>
+    </servlet>-->
     <servlet>
         <servlet-name>delete</servlet-name>
         <servlet-class>cl.blueprints.jean.attributes.Delete</servlet-class>
@@ -16,10 +16,10 @@
         <servlet-class>cl.blueprints.jean.attributes.Add</servlet-class>
     </servlet>
 
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>manage</servlet-name>
         <url-pattern>/manage</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>delete</servlet-name>
         <url-pattern>/delete</url-pattern>

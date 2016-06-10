@@ -19,7 +19,7 @@ public class Add extends HttpServlet {
         HttpSession session = req.getSession(true);
         session.setAttribute(name, value);
 
-        req.getRequestDispatcher("manage").forward(req, resp);
+        req.getRequestDispatcher("manager.jsp").forward(req, resp);
 
     }
 
